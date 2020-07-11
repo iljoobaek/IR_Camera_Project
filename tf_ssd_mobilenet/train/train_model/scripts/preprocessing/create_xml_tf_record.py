@@ -161,13 +161,13 @@ def main(_):
   label_map_dict['bicycle'] = 3
   #print(label_map_dict)
   #exit()
-  data_dirs = {"FLIR": '../../../Datasets/FLIR/',
+  data_dirs = {"FLIR": "/home/rtml/Documents/weichen/Datasets/FLIR/",
                # "set00": '../../../Datasets/CMU/',
                # "set01": '../../../Datasets/CMU/',
                # "set02": '../../../Datasets/CMU/',
                # "set03": '../../../Datasets/CMU/',
                # "set04": '../../../Datasets/CMU/',
-               "set05_L": '../../../Datasets/CMU/',
+               "set05_L": "/home/rtml/Documents/weichen/Datasets/CMU/",
                }
 
   cnt_img = 0
