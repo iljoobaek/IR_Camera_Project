@@ -1,0 +1,84 @@
+Training & Test File Structure:
+
+- addons
+    - labelVid
+- models
+    - official
+    - research
+        - object_detection
+        - slim
+        - ...
+    - samples
+    - tutorials
+- scripts
+    - preprocessing
+    - postprocessing
+- workspace
+    - training
+        - annotations
+        - images
+        - pre-trained-model
+            - ssd_mobilenet_v1
+        - training
+            - train_ssd_mobilenet_v1
+            - cmudata_label_map.pbtxt
+            - train.tfrecord
+            - test.tfrecord
+        - exported_models
+        - configs
+
+
+Dataset Structure:
+
+Datasets
+- CMU
+    - Annotations
+    - ImageSets
+    - JPEGImages
+    - Preprocessing
+        - Annotations
+        - Detections
+        - ImageLists
+            - set00.txt
+            - set01.txt
+            - set02.txt
+            - set03.txt
+            - set04.txt
+            - set00_train.txt
+            - set01_train.txt
+            - set02_train.txt
+            - set03_train.txt
+            - set04_train.txt
+            - set00_test.txt
+            - set01_test.txt
+            - set02_test.txt
+            - set03_test.txt
+            - set04_test.txt
+            - ...
+        - Images
+            - set00
+            - set01
+            - set02
+            - set03
+            - set04
+            - ...
+        - Videos
+- FLIR
+    - Annotations
+    - ImageSets
+    - JPEGImages
+    - Preprocessing
+        - Annotations
+            - FLIR
+            - annotation_car_people_bicycle
+            - annotation_traffic_cone_channelizer
+            - annotation_van_truck_bus
+        - Detections
+        - ImageLists
+            - FLIR.txt
+            - FLIR_train.txt
+            - FLIR_text.txt
+        - Images
+            - FLIR
+        - Videos
+- KAIST

@@ -1,0 +1,45 @@
+item {
+  id: 1
+  name: 'car'
+}
+
+item {
+  id: 2
+  name: 'pedestrian'
+}
+
+item {
+  id: 3
+  name: 'cyclist'
+}
+
+item {
+  id: 4
+  name: 'van'
+}
+
+item {
+  id: 5
+  name: 'truck'
+}
+
+item {
+  id: 6
+  name: 'bus'
+}
+
+item {
+  id: 7
+  name: 'animal'
+}
+
+item {
+  id: 8
+  name: 'traffic_cone'
+}
+
+item {
+  id: 9
+  name: 'channelizer'
+}
+

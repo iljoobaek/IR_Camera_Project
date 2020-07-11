@@ -1,0 +1,4 @@
+
+label_map_path: '../../workspace/training/training/cmudata_label_map.pbtxt'
+tf_record_input_reader: { input_path: '../../workspace/training/training/test_detections.tfrecord' }
+
