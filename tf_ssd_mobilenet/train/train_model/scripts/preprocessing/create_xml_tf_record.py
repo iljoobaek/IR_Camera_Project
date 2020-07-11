@@ -162,11 +162,13 @@ def main(_):
   #print(label_map_dict)
   #exit()
   data_dirs = {"FLIR": '../../../Datasets/FLIR/',
-               "set00": '../../../Datasets/CMU/',
-               "set01": '../../../Datasets/CMU/',
-               "set02": '../../../Datasets/CMU/',
-               "set03": '../../../Datasets/CMU/',
-               "set04": '../../../Datasets/CMU/'}
+               # "set00": '../../../Datasets/CMU/',
+               # "set01": '../../../Datasets/CMU/',
+               # "set02": '../../../Datasets/CMU/',
+               # "set03": '../../../Datasets/CMU/',
+               # "set04": '../../../Datasets/CMU/',
+               "set05_L": '../../../Datasets/CMU/',
+               }
 
   cnt_img = 0
   for data_dir in data_dirs:
