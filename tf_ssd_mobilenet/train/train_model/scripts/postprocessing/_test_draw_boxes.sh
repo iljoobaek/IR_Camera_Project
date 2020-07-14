@@ -1,6 +1,6 @@
 export PYTHONPATH=$PYTHONPATH:../../models/research/:../../models/research/slim
 
-EVAL_DIR=../../workspace/training/eval/eval_20200615
+EVAL_DIR=../../workspace/training/eval/eval_20200713
 EVAL_RESULT_PATH=${EVAL_DIR}/results.csv
 IMAGE_DIR=config/data/cmudata/JPEGImages/set00
 OUT_DIR=config/data/cmudata/JPEGImages/set00_eval_metrics/prediction/
