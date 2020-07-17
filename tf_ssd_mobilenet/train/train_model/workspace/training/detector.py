@@ -224,9 +224,9 @@ class ObjectDetector(object):
 
 if __name__ == '__main__':
     checkpoint_path = os.path.join(dirname,
-        'training/train_ssd_mobilenet_v1/model.ckpt-97165')
+        'training/train_ssd_mobilenet_v1_FLIR_CMU05/model.ckpt-400124')
     pipeline_config_path = os.path.join(dirname,
-        'training/train_ssd_mobilenet_v1/pipeline.config')
+        'training/train_ssd_mobilenet_v1_FLIR_CMU05/pipeline.config')
     label_map_path = os.path.join(dirname,
         'training/cmudata_label_map.pbtxt')
     detector = ObjectDetector(checkpoint_path, pipeline_config_path, label_map_path)

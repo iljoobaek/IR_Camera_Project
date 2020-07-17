@@ -1,9 +1,9 @@
 export CUDA_VISIBLE_DEVICES=1
 export PYTHONPATH=$PYTHONPATH:../../models/research/:../../models/research/slim
 
-BASE_PATH=../../../Datasets/FLIR/Preprocessing/
-TARGET_PATH=FLIR
+BASE_PATH=/home/rtml/Documents/weichen/Datasets/CMU/Preprocessing/
+TARGET_PATH=setxx1
 python detector.py ${BASE_PATH} \
                     ${TARGET_PATH} \
-                    ./detection
+                    ./detection/0713_flir_cmu05
 
