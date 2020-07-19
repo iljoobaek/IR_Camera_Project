@@ -3,7 +3,7 @@ export PYTHONPATH=$PYTHONPATH:../../models/research/:../../models/research/slim
 SPLIT=../../workspace/training/training/test_detections.tfrecord  # or test
 #TF_RECORD_FILES=$(ls -1 ${SPLIT}_tfrecords/* | tr '\n' ',')
 TF_RECORD_FILES=../../workspace/training/training/test.tfrecord
-INF_DIR=../../workspace/training/exported_models/froze_graph_0713/frozen_inference_graph.pb
+INF_DIR=../../workspace/training/exported_models/froze_graph_0719/frozen_inference_graph.pb
 
 PYTHONPATH=$PYTHONPATH:$(readlink -f ..) \
 python -m infer_detections \
