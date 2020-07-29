@@ -243,7 +243,8 @@ if __name__ == '__main__':
     if not os.path.exists(output_dir):
         os.mkdir(output_dir)
 
-    examples_path = os.path.join(base_path, 'ImageLists', target + '_test.txt')
+    # examples_path = os.path.join(base_path, 'ImageLists', target + '_test.txt')
+    examples_path = os.path.join(base_path, 'ImageLists', target + '.txt')
     examples_list = dataset_util.read_examples_list(examples_path)
     for idx, example in enumerate(examples_list):
     # for f in sorted(os.listdir(img_path)):
