@@ -1,6 +1,6 @@
 # env: tfmobile_py2
 BASE_PATH=../../../Datasets/CMU/
-NAME=set05_L
+NAME=set_selected
 IMG_PATH=${BASE_PATH}Preprocessing/Images/${NAME}/
 ANNO_PATH=${BASE_PATH}Preprocessing/Annotations/${NAME}/
 OUT_PATH_all=${BASE_PATH}Preprocessing/ImageLists/${NAME}.txt

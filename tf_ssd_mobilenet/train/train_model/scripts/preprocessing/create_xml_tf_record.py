@@ -169,6 +169,7 @@ def main(_):
                "set03": "/home/rtml/Documents/weichen/Datasets/CMU/",
                "set04": "/home/rtml/Documents/weichen/Datasets/CMU/",
                "set05_L": "/home/rtml/Documents/weichen/Datasets/CMU/",
+               "set_selected": "/home/rtml/Documents/weichen/Datasets/CMU/",
                }
 
   cnt_img = 0
