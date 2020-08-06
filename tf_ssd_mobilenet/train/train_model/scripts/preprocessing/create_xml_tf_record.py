@@ -160,6 +160,7 @@ def main(_):
   label_map_dict['person'] = 2
   label_map_dict['bicycle'] = 3
   label_map_dict['END'] = 0
+  label_map_dict['motorcycle'] = 3
   #print(label_map_dict)
   #exit()
   data_dirs = {"FLIR": "/home/rtml/Documents/weichen/Datasets/FLIR/",
