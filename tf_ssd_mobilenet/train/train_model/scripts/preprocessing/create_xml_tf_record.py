@@ -163,7 +163,7 @@ def main(_):
   label_map_dict['motorcycle'] = 3
   #print(label_map_dict)
   #exit()
-  data_dirs = {"FLIR": "/home/rtml/Documents/weichen/Datasets/FLIR/",
+  data_dirs = {# "FLIR": "/home/rtml/Documents/weichen/Datasets/FLIR/",
                "set00": "/home/rtml/Documents/weichen/Datasets/CMU/",
                "set01": "/home/rtml/Documents/weichen/Datasets/CMU/",
                "set02": "/home/rtml/Documents/weichen/Datasets/CMU/",
