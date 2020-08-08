@@ -224,9 +224,9 @@ class ObjectDetector(object):
 
 if __name__ == '__main__':
     checkpoint_path = os.path.join(dirname,
-        'training/train_ssd_mobilenet_v1_FLIR_CMU00-05/model.ckpt-523910')
+        'training/train_ssd_mobilenet_v1_FLIR_CMU00-05-selected/model.ckpt-480879')
     pipeline_config_path = os.path.join(dirname,
-        'training/train_ssd_mobilenet_v1_FLIR_CMU00-05/pipeline.config')
+        'training/train_ssd_mobilenet_v1_FLIR_CMU00-05-selected/pipeline.config')
     label_map_path = os.path.join(dirname,
         'training/cmudata_label_map.pbtxt')
     detector = ObjectDetector(checkpoint_path, pipeline_config_path, label_map_path)
@@ -243,8 +243,8 @@ if __name__ == '__main__':
     if not os.path.exists(output_dir):
         os.mkdir(output_dir)
 
-    # examples_path = os.path.join(base_path, 'ImageLists', target + '_test.txt')
-    examples_path = os.path.join(base_path, 'ImageLists', target + '.txt')
+    examples_path = os.path.join(base_path, 'ImageLists', target + '_test.txt')
+    # examples_path = os.path.join(base_path, 'ImageLists', target + '.txt')
     examples_list = dataset_util.read_examples_list(examples_path)
     for idx, example in enumerate(examples_list):
     # for f in sorted(os.listdir(img_path)):
