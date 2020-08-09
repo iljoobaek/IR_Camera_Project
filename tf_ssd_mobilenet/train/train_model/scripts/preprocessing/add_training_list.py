@@ -26,7 +26,7 @@ if __name__ == '__main__' :
     out_path_test = sys.argv[5]
 
     all_images = []
-    for name in os.listdir(img_path):
+    for name in sorted(os.listdir(img_path)):
         if check_num_obj(osp.join(anno_path, name.split(".")[0] + ".xml")): all_images.append(name)
 
     # all_images = np.random.permutation(os.listdir(img_path))
