@@ -97,6 +97,9 @@ def dict_to_tf_example(data, filename,
   width = int(data['size']['width'])
   height = int(data['size']['height'])
 
+  id_to_classname = {1: "car", 2: "pedestrian", 3: "cyclist", 4: "van", 5: "truck",
+                     6: "bus", 7: "animal", 8: "traffic_cone", 9: "channelizer"}
+
   xmin = []
   ymin = []
   xmax = []
@@ -118,7 +121,8 @@ def dict_to_tf_example(data, filename,
       ymin.append(float(obj['bndbox']['ymin']) / height)
       xmax.append(float(obj['bndbox']['xmax']) / width)
       ymax.append(float(obj['bndbox']['ymax']) / height)
-      classes_text.append(obj['classname'].encode('utf8'))
+      # classes_text.append(obj['classname'].encode('utf8'))
+      classes_text.append(id_to_classname[label_map_dict[obj['classname']]].encode('utf8'))
       classes.append(label_map_dict[obj['classname']])
       truncated.append(int(obj['truncated']))
 
