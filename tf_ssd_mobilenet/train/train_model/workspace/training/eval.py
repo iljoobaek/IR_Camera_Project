@@ -128,9 +128,9 @@ def main(unused_argv):
   categories = label_map_util.convert_label_map_to_categories(
       label_map, max_num_classes)
 
-  print(label_map)
-  print(categories)
-  exit()
+  # print(label_map)
+  # print(categories)
+  # exit()
 
   if FLAGS.run_once:
     eval_config.max_evals = 1
