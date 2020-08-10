@@ -164,9 +164,9 @@ def main(_):
   label_map_dict['bicycle'] = 0
   label_map_dict['motorcycle'] = 0
   label_map_dict['cyclist'] = 0
-  label_map_dict['van'] = 0
-  label_map_dict['truck'] = 0
-  label_map_dict['bus'] = 0
+  label_map_dict['van'] = 1
+  label_map_dict['truck'] = 1
+  label_map_dict['bus'] = 1
   label_map_dict['animal'] = 0
   label_map_dict['traffic_cone'] = 0
   label_map_dict['channelizer'] = 0
