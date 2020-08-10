@@ -98,7 +98,8 @@ def dict_to_tf_example(data, filename,
   height = int(data['size']['height'])
 
   id_to_classname = {1: "car", 2: "pedestrian", 3: "cyclist", 4: "van", 5: "truck",
-                     6: "bus", 7: "animal", 8: "traffic_cone", 9: "channelizer"}
+                     6: "bus", 7: "animal", 8: "traffic_cone", 9: "channelizer",
+                     0: "background"}
 
   xmin = []
   ymin = []
