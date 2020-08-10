@@ -174,8 +174,8 @@ def main(_):
   label_map_dict['animal'] = 0
   label_map_dict['traffic_cone'] = 0
   label_map_dict['channelizer'] = 0
-  print(label_map_dict)
-  exit()
+  # print(label_map_dict)
+  # exit()
   data_dirs = {# "FLIR": "/home/rtml/Documents/weichen/Datasets/FLIR/",
                "set00": "/home/rtml/Documents/weichen/Datasets/CMU/",
                "set01": "/home/rtml/Documents/weichen/Datasets/CMU/",
