@@ -146,8 +146,8 @@ class ObjectDetector(object):
         # print(self._category_index)
         visualization.plt_bboxes(
             image,
-            # rclasses+1,
-            rclasses,
+            rclasses+1,
+            # rclasses,
             rscores,
             rbboxes,
             self._category_index,

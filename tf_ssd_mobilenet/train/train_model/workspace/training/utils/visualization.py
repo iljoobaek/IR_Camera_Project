@@ -313,7 +313,7 @@ def plt_bboxes(img, classes, scores, bboxes, id_to_label_box, figsize=(10,10),
             if scores[i] < Threshold:
                 continue
         cls_id = int(classes[i])
-        if cls_id >= 0:# and cls_id != 7 and cls_id != 76:
+        if cls_id >= 0 and cls_id < 10:# and cls_id != 7 and cls_id != 76:
             score = scores[i]
             color = colors_custom[(cls_id%len(colors_custom))][1][::-1]
             # the higher the score, the clear the color
