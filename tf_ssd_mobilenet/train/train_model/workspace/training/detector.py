@@ -142,6 +142,7 @@ class ObjectDetector(object):
         #     cnt += 1
 
         #visualization
+        print(self._category_index)
         visualization.plt_bboxes(
             image,
             rclasses+1,
