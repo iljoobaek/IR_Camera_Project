@@ -178,13 +178,14 @@ def main(_):
   # print(label_map_dict)
   # exit()
   data_dirs = {# "FLIR": "/home/rtml/Documents/weichen/Datasets/FLIR/",
-               "set00": "/home/rtml/Documents/weichen/Datasets/CMU/",
-               "set01": "/home/rtml/Documents/weichen/Datasets/CMU/",
-               "set02": "/home/rtml/Documents/weichen/Datasets/CMU/",
-               "set03": "/home/rtml/Documents/weichen/Datasets/CMU/",
-               "set04": "/home/rtml/Documents/weichen/Datasets/CMU/",
-               "set05_L": "/home/rtml/Documents/weichen/Datasets/CMU/",
-               "set_selected": "/home/rtml/Documents/weichen/Datasets/CMU/",
+               #"set00": "/home/rtml/Documents/weichen/Datasets/CMU/",
+               #"set01": "/home/rtml/Documents/weichen/Datasets/CMU/",
+               # "set02": "/home/rtml/Documents/weichen/Datasets/CMU/",
+               # "set03": "/home/rtml/Documents/weichen/Datasets/CMU/",
+               # "set04": "/home/rtml/Documents/weichen/Datasets/CMU/",
+               # "set05_L": "/home/rtml/Documents/weichen/Datasets/CMU/",
+               # "set_selected": "/home/rtml/Documents/weichen/Datasets/CMU/",
+               "setxx_cmu00-05-selected_split2": "/home/rtml/Documents/weichen/Datasets/CMU/",
                }
 
   cnt_img = 0

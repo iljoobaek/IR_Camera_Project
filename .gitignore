@@ -40,3 +40,5 @@ events*
 *.ckpt*
 *.tar*
 *.tfrecord
+
+*IR_Gui.pro.user
