@@ -191,9 +191,9 @@ def main(_):
   cnt_img = 0
   for data_dir in data_dirs:
       logging.info('Reading from %s dataset.', data_dir)
-      # examples_path = os.path.join(data_dirs[data_dir], 'Preprocessing', 'ImageLists', data_dir + '_' + FLAGS.type + '.txt')
-      examples_path = os.path.join(data_dirs[data_dir], 'Preprocessing', 'ImageLists',
-                                   data_dir + '.txt')
+      examples_path = os.path.join(data_dirs[data_dir], 'Preprocessing', 'ImageLists', data_dir + '_' + FLAGS.type + '.txt')
+      # examples_path = os.path.join(data_dirs[data_dir], 'Preprocessing', 'ImageLists',
+      #                              data_dir + '.txt')
 
       annotations_dir = os.path.join(data_dirs[data_dir], 'Preprocessing', 'Annotations', data_dir)
       examples_list = dataset_util.read_examples_list(examples_path)
