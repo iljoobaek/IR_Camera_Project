@@ -29,8 +29,8 @@ if __name__ == '__main__' :
     for name in sorted(os.listdir(img_path)):
         if check_num_obj(osp.join(anno_path, name.split(".")[0] + ".xml")): all_images.append(name)
 
-    # all_images = np.random.permutation(os.listdir(img_path))
-    # all_images = np.random.permutation(all_images)
+    all_images = np.random.permutation(os.listdir(img_path))
+    all_images = np.random.permutation(all_images)
     train_images = all_images[:int(0.8 * len(all_images))]
     test_images = all_images[int(0.8 * len(all_images)):]
     with open(out_path, 'w+') as f:
