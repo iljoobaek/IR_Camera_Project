@@ -192,9 +192,9 @@ class ObjectDetector(object):
         #                     0.5,    #Moter
         #                     ),
         # select_threshold=(0.5,)*16,
-        select_threshold=(0.1,)*9,
+        select_threshold=(0.5,)*9,
         # select_threshold=0.5,
-        nms_threshold=0.5):
+        nms_threshold=0.1):
         # Get classes and bboxes from the net outputs.
         rclasses, rscores, rbboxes = np_methods.ssd_bboxes_select_layer(
                 detection_scores,
@@ -228,9 +228,9 @@ class ObjectDetector(object):
 
 if __name__ == '__main__':
     checkpoint_path = os.path.join(dirname,
-        'training/train_ssd_mobilenet_v1_FLIR_CMU00-05-selected_all_0827_config2/model.ckpt-300000')
+        'training/train_ssd_mobilenet_v1_FLIR_CMU00-05/model.ckpt-523910')
     pipeline_config_path = os.path.join(dirname,
-        'training/train_ssd_mobilenet_v1_FLIR_CMU00-05-selected_all_0827_config2/pipeline.config')
+        'training/train_ssd_mobilenet_v1_FLIR_CMU00-05/pipeline.config')
     label_map_path = os.path.join(dirname,
         'training/cmudata_label_map.pbtxt')
     detector = ObjectDetector(checkpoint_path, pipeline_config_path, label_map_path)
