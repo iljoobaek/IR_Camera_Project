@@ -192,7 +192,7 @@ class ObjectDetector(object):
         #                     0.5,    #Moter
         #                     ),
         # select_threshold=(0.5,)*16,
-        select_threshold=(0.5,)*9,
+        select_threshold=(0.1,)*9,
         # select_threshold=0.5,
         nms_threshold=0.5):
         # Get classes and bboxes from the net outputs.
