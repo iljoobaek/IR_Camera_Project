@@ -97,8 +97,8 @@ class ObjectDetector(object):
         model._image_resizer_fn = functools.partial(self._resizer_fn,
             new_image_size=self._resized_image_size)
 
-        # model._anchor_generator._base_anchor_size = [tf.minimum(scale, 1.0),
-        #                                              tf.minimum(scale, 1.0)]
+        model._anchor_generator._base_anchor_size = [tf.minimum(scale, 1.0),
+                                                     tf.minimum(scale, 1.0)]
         preprocessed_image, true_image_shapes = model.preprocess(
             tf.to_float(image_4D))
         prediction_dict = model.predict(preprocessed_image, true_image_shapes)
