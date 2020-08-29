@@ -97,6 +97,7 @@ class ObjectDetector(object):
         model._image_resizer_fn = functools.partial(self._resizer_fn,
             new_image_size=self._resized_image_size)
 
+        # THIS IS IMPORTANT FOR BOUNDING BOX!
         model._anchor_generator._base_anchor_size = [tf.minimum(scale, 1.0),
                                                      tf.minimum(scale, 1.0)]
         preprocessed_image, true_image_shapes = model.preprocess(
@@ -228,9 +229,9 @@ class ObjectDetector(object):
 
 if __name__ == '__main__':
     checkpoint_path = os.path.join(dirname,
-        'training/train_ssd_mobilenet_v1_CMU00-05-selected_different/model.ckpt-310243')
+        'training/train_ssd_mobilenet_v1_FLIR_CMU00-05-selected_all_0827_config1/model.ckpt-300000')
     pipeline_config_path = os.path.join(dirname,
-        'training/train_ssd_mobilenet_v1_CMU00-05-selected_different/pipeline.config')
+        'training/train_ssd_mobilenet_v1_FLIR_CMU00-05-selected_all_0827_config1/pipeline.config')
     label_map_path = os.path.join(dirname,
         'training/cmudata_label_map.pbtxt')
     detector = ObjectDetector(checkpoint_path, pipeline_config_path, label_map_path)
