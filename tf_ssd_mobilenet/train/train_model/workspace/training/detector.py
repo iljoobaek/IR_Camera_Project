@@ -194,7 +194,7 @@ class ObjectDetector(object):
         # select_threshold=(0.5,)*16,
         select_threshold=(0.5,)*9,
         # select_threshold=0.5,
-        nms_threshold=0.1):
+        nms_threshold=0.5):
         # Get classes and bboxes from the net outputs.
         rclasses, rscores, rbboxes = np_methods.ssd_bboxes_select_layer(
                 detection_scores,
