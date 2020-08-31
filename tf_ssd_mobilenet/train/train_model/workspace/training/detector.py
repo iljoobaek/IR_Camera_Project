@@ -98,6 +98,7 @@ class ObjectDetector(object):
             new_image_size=self._resized_image_size)
 
         # THIS IS IMPORTANT FOR BOUNDING BOX!
+        # FAST RCNN
         model._anchor_generator._base_anchor_size = [tf.minimum(scale, 1.0),
                                                      tf.minimum(scale, 1.0)]
         preprocessed_image, true_image_shapes = model.preprocess(

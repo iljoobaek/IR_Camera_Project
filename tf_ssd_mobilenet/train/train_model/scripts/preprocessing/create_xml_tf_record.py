@@ -185,16 +185,16 @@ def main(_):
                "set04": "/home/rtml/Documents/weichen/Datasets/CMU/",
                "set05_L": "/home/rtml/Documents/weichen/Datasets/CMU/",
                "set_selected": "/home/rtml/Documents/weichen/Datasets/CMU/",
-               "set14-17_partial": "/home/rtml/Documents/weichen/Datasets/CMU/",
+               #"set14-17_partial": "/home/rtml/Documents/weichen/Datasets/CMU/",
                #"setxx_cmu00-05-selected_split2": "/home/rtml/Documents/weichen/Datasets/CMU/",
                }
 
   cnt_img = 0
   for data_dir in data_dirs:
       logging.info('Reading from %s dataset.', data_dir)
-      # examples_path = os.path.join(data_dirs[data_dir], 'Preprocessing', 'ImageLists', data_dir + '_' + FLAGS.type + '.txt')
-      examples_path = os.path.join(data_dirs[data_dir], 'Preprocessing', 'ImageLists',
-                                   data_dir + '.txt')
+      examples_path = os.path.join(data_dirs[data_dir], 'Preprocessing', 'ImageLists', data_dir + '_' + FLAGS.type + '.txt')
+      #examples_path = os.path.join(data_dirs[data_dir], 'Preprocessing', 'ImageLists',
+      #                             data_dir + '.txt')
 
       annotations_dir = os.path.join(data_dirs[data_dir], 'Preprocessing', 'Annotations', data_dir)
       examples_list = dataset_util.read_examples_list(examples_path)
