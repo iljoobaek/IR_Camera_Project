@@ -127,11 +127,15 @@ class ObjectDetector(object):
             image: a uint8 [height, width, depth] array representing the image.
 
         """
+        t0 = time.time()
         rbboxes, rscores, rclasses = self._sess.run(
             [self._detection_dict['detection_boxes'],
              self._detection_dict['detection_scores'],
              self._detection_dict['detection_classes']],
             feed_dict={self._image:image})
+        t0 = time.time() - t0
+        print("inference time: %f" % t0)
+
         # numpy NMS method
         rbboxes, rscores, rclasses = self._np_nms(rbboxes,rscores)
 
