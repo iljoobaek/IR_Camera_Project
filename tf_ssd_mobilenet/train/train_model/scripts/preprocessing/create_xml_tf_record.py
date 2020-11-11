@@ -162,19 +162,21 @@ def main(_):
   writer = tf.python_io.TFRecordWriter(output_path)
 
   label_map_dict = label_map_util.get_label_map_dict(FLAGS.label_map_path)
-  label_map_dict['person'] = 2
-  label_map_dict['bicycle'] = 3
-  label_map_dict['motorcycle'] = 3
+  # label_map_dict['person'] = 2
+  # label_map_dict['bicycle'] = 3
+  # label_map_dict['motorcycle'] = 3
   label_map_dict['END'] = 0
-  # label_map_dict['bicycle'] = 0
-  # label_map_dict['motorcycle'] = 0
-  # label_map_dict['cyclist'] = 0
-  # label_map_dict['van'] = 1
-  # label_map_dict['truck'] = 1
-  # label_map_dict['bus'] = 1
-  # label_map_dict['animal'] = 0
-  # label_map_dict['traffic_cone'] = 0
-  # label_map_dict['channelizer'] = 0
+  label_map_dict['bicycle'] = 0
+  label_map_dict['motorcycle'] = 0
+  label_map_dict['car'] = 1
+  label_map_dict['pedestrian'] = 0
+  label_map_dict['cyclist'] = 0
+  label_map_dict['van'] = 0
+  label_map_dict['truck'] = 0
+  label_map_dict['bus'] = 0
+  label_map_dict['animal'] = 0
+  label_map_dict['traffic_cone'] = 0
+  label_map_dict['channelizer'] = 0
   # print(label_map_dict)
   # exit()
   data_dirs = {"FLIR": "/home/rtml/Documents/weichen/Datasets/FLIR/",
@@ -185,7 +187,7 @@ def main(_):
                "set04": "/home/rtml/Documents/weichen/Datasets/CMU/",
                "set05_L": "/home/rtml/Documents/weichen/Datasets/CMU/",
                "set_selected": "/home/rtml/Documents/weichen/Datasets/CMU/",
-               #"set14-17_partial": "/home/rtml/Documents/weichen/Datasets/CMU/",
+               "set14-17_partial": "/home/rtml/Documents/weichen/Datasets/CMU/",
                #"setxx_cmu00-05-selected_split2": "/home/rtml/Documents/weichen/Datasets/CMU/",
                }
 
