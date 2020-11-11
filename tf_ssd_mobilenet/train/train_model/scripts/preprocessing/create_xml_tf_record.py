@@ -170,6 +170,7 @@ def main(_):
   label_map_dict['motorcycle'] = 0
   label_map_dict['car'] = 1
   label_map_dict['pedestrian'] = 0
+  label_map_dict['person'] = 0
   label_map_dict['cyclist'] = 0
   label_map_dict['van'] = 0
   label_map_dict['truck'] = 0
