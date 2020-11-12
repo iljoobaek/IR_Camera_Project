@@ -86,6 +86,7 @@ def dict_to_tf_example(data, filename,
   """
   img_path = os.path.join(image_subdirectory, filename + ".jpeg")
   full_path = os.path.join(dataset_directory, img_path)
+  print(img_path)
   with tf.gfile.GFile(full_path, 'rb') as fid:
     encoded_jpg = fid.read()
   encoded_jpg_io = io.BytesIO(encoded_jpg)
@@ -180,15 +181,15 @@ def main(_):
   label_map_dict['channelizer'] = 0
   # print(label_map_dict)
   # exit()
-  data_dirs = {"FLIR": "/home/rtml/Documents/weichen/Datasets/FLIR/",
+  data_dirs = {#"FLIR": "/home/rtml/Documents/weichen/Datasets/FLIR/",
                "set00": "/home/rtml/Documents/weichen/Datasets/CMU/",
                "set01": "/home/rtml/Documents/weichen/Datasets/CMU/",
                "set02": "/home/rtml/Documents/weichen/Datasets/CMU/",
                "set03": "/home/rtml/Documents/weichen/Datasets/CMU/",
                "set04": "/home/rtml/Documents/weichen/Datasets/CMU/",
                "set05_L": "/home/rtml/Documents/weichen/Datasets/CMU/",
-               "set_selected": "/home/rtml/Documents/weichen/Datasets/CMU/",
-               "set14-17_partial": "/home/rtml/Documents/weichen/Datasets/CMU/",
+               # "set_selected": "/home/rtml/Documents/weichen/Datasets/CMU/",
+               # "set14-17_partial": "/home/rtml/Documents/weichen/Datasets/CMU/",
                #"setxx_cmu00-05-selected_split2": "/home/rtml/Documents/weichen/Datasets/CMU/",
                }
 
