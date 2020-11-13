@@ -167,29 +167,29 @@ def main(_):
   # label_map_dict['bicycle'] = 3
   # label_map_dict['motorcycle'] = 3
   label_map_dict['END'] = 0
-  label_map_dict['bicycle'] = 0
-  label_map_dict['motorcycle'] = 0
+  label_map_dict['bicycle'] = 2
+  label_map_dict['motorcycle'] = 2
   label_map_dict['car'] = 1
-  label_map_dict['pedestrian'] = 0
-  label_map_dict['person'] = 0
-  label_map_dict['cyclist'] = 0
-  label_map_dict['van'] = 0
-  label_map_dict['truck'] = 0
-  label_map_dict['bus'] = 0
-  label_map_dict['animal'] = 0
-  label_map_dict['traffic_cone'] = 0
-  label_map_dict['channelizer'] = 0
+  label_map_dict['pedestrian'] = 2
+  label_map_dict['person'] = 2
+  label_map_dict['cyclist'] = 2
+  label_map_dict['van'] = 2
+  label_map_dict['truck'] = 2
+  label_map_dict['bus'] = 2
+  label_map_dict['animal'] = 2
+  label_map_dict['traffic_cone'] = 2
+  label_map_dict['channelizer'] = 2
   # print(label_map_dict)
   # exit()
-  data_dirs = {#"FLIR": "/home/rtml/Documents/weichen/Datasets/FLIR/",
+  data_dirs = {"FLIR": "/home/rtml/Documents/weichen/Datasets/FLIR/",
                "set00": "/home/rtml/Documents/weichen/Datasets/CMU/",
                "set01": "/home/rtml/Documents/weichen/Datasets/CMU/",
                "set02": "/home/rtml/Documents/weichen/Datasets/CMU/",
                "set03": "/home/rtml/Documents/weichen/Datasets/CMU/",
                "set04": "/home/rtml/Documents/weichen/Datasets/CMU/",
                "set05_L": "/home/rtml/Documents/weichen/Datasets/CMU/",
-               # "set_selected": "/home/rtml/Documents/weichen/Datasets/CMU/",
-               # "set14-17_partial": "/home/rtml/Documents/weichen/Datasets/CMU/",
+               "set_selected": "/home/rtml/Documents/weichen/Datasets/CMU/",
+               "set14-17_partial": "/home/rtml/Documents/weichen/Datasets/CMU/",
                #"setxx_cmu00-05-selected_split2": "/home/rtml/Documents/weichen/Datasets/CMU/",
                }
 
