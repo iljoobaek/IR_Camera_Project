@@ -86,7 +86,7 @@ def dict_to_tf_example(data, filename,
   """
   img_path = os.path.join(image_subdirectory, filename + ".jpeg")
   full_path = os.path.join(dataset_directory, img_path)
-  print(img_path)
+  # print(img_path)
   with tf.gfile.GFile(full_path, 'rb') as fid:
     encoded_jpg = fid.read()
   encoded_jpg_io = io.BytesIO(encoded_jpg)
@@ -169,9 +169,9 @@ def main(_):
   label_map_dict['END'] = 0
   label_map_dict['bicycle'] = 2
   label_map_dict['motorcycle'] = 2
-  label_map_dict['car'] = 1
-  label_map_dict['pedestrian'] = 2
-  label_map_dict['person'] = 2
+  label_map_dict['car'] = 2
+  label_map_dict['pedestrian'] = 1
+  label_map_dict['person'] = 1
   label_map_dict['cyclist'] = 2
   label_map_dict['van'] = 2
   label_map_dict['truck'] = 2
