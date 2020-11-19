@@ -161,10 +161,11 @@ def process_detections_2(detections_record1, detections_record2, categories):
             all_detect_scores.append(detection_scores)
             all_detect_classes.append(detection_classes)
             all_detect_boxes.append(detection_boxes)
-            print(type(detection_scores), type(detection_classes), type(detection_boxes))
-            print(detection_scores.shape, detection_classes.shape, detection_boxes.shape)
-            exit()
+            # print(type(detection_scores), type(detection_classes), type(detection_boxes))
+            # print(detection_scores.shape, detection_classes.shape, detection_boxes.shape)
+            # exit()
 
+            '''
             matches = []
 
             if image_index % 100 == 0:
@@ -203,11 +204,12 @@ def process_detections_2(detections_record1, detections_record2, categories):
             for i in range(len(detection_boxes)):
                 if matches.shape[0] > 0 and matches[matches[:, 1] == i].shape[0] == 0:
                     confusion_matrix[confusion_matrix.shape[0] - 1][detection_classes[i] - 1] += 1
+            '''
         else:
             print("Skipped image %d" % (image_index))
 
     image_index = 0
-    for string_record in record_iterator1:
+    for string_record in record_iterator2:
         example = tf.train.Example()
         example.ParseFromString(string_record)
         decoded_dict = data_parser.parse(example)
@@ -221,9 +223,12 @@ def process_detections_2(detections_record1, detections_record2, categories):
                 detection_scores >= CONFIDENCE_THRESHOLD]
             detection_boxes = decoded_dict[standard_fields.DetectionResultFields.detection_boxes][
                 detection_scores >= CONFIDENCE_THRESHOLD]
-            all_detect_scores.append(detection_scores)
-            all_detect_classes.append(detection_classes)
-            all_detect_boxes.append(detection_boxes)
+            all_detect_scores[image_index].append(detection_scores)
+            all_detect_classes[image_index].append(detection_classes)
+            all_detect_boxes[image_index].append(detection_boxes)
+            print(all_detect_scores[image_index].shape, all_detect_classes[image_index].shape, all_detect_boxes[image_index].shape)
+            exit()
+
         else:
             print("Skipped image %d" % (image_index))
         image_index += 1
