@@ -162,6 +162,7 @@ def process_detections_2(detections_record1, detections_record2, categories):
             all_detect_classes.append(detection_classes)
             all_detect_boxes.append(detection_boxes)
             print(type(detection_scores), type(detection_classes), type(detection_boxes))
+            print(detection_scores.shape, detection_classes.shape, detection_boxes.shape)
             exit()
 
             matches = []
