@@ -217,6 +217,8 @@ def process_detections_2(detections_record1, detections_record2, categories):
         # print(decoded_dict)
 
         if decoded_dict:
+            print(all_detect_scores[image_index].shape, all_detect_classes[image_index].shape,
+                  all_detect_boxes[image_index].shape)
 
             detection_scores = decoded_dict[standard_fields.DetectionResultFields.detection_scores]
             detection_classes = decoded_dict[standard_fields.DetectionResultFields.detection_classes][
