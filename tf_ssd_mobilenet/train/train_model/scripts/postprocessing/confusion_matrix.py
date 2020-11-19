@@ -198,8 +198,8 @@ def process_detections_2(detections_record1, detections_record2, categories):
     for idx in range(len(all_gt_boxes)):
         matches = []
 
-        if image_index % 100 == 0:
-            print("Processed %d images" % (image_index))
+        if idx % 100 == 0:
+            print("Processed %d images" % (idx))
 
         for i in range(len(all_gt_boxes[idx])):
             for j in range(len(all_detect_boxes[idx])):
@@ -215,7 +215,7 @@ def process_detections_2(detections_record1, detections_record2, categories):
             matches = matches[matches[:, 2].argsort()[::-1][:len(matches)]]
 
             # Remove duplicate detections from the list.
-            matches = matches[np.unique(matches[:, 1], return_index=True)[1]]
+            # matches = matches[np.unique(matches[:, 1], return_index=True)[1]]
 
             # Sort the list again by descending IOU. Removing duplicates doesn't preserve
             # our previous sort.
@@ -235,7 +235,7 @@ def process_detections_2(detections_record1, detections_record2, categories):
             if matches.shape[0] > 0 and matches[matches[:, 1] == i].shape[0] == 0:
                 confusion_matrix[confusion_matrix.shape[0] - 1][all_detect_classes[idx][i] - 1] += 1
 
-    print("Processed %d images" % (image_index))
+    print("Processed %d images" % (idx))
 
     return confusion_matrix
 
