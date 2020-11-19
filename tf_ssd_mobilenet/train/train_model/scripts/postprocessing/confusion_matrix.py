@@ -223,9 +223,9 @@ def process_detections_2(detections_record1, detections_record2, categories):
                 detection_scores >= CONFIDENCE_THRESHOLD]
             detection_boxes = decoded_dict[standard_fields.DetectionResultFields.detection_boxes][
                 detection_scores >= CONFIDENCE_THRESHOLD]
-            all_detect_scores[image_index].append(detection_scores)
-            all_detect_classes[image_index].append(detection_classes)
-            all_detect_boxes[image_index].append(detection_boxes)
+            all_detect_scores[image_index] = np.append(all_detect_scores[image_index], detection_scores)
+            all_detect_classes[image_index] = np.append(all_detect_classes[image_index], detection_classes)
+            all_detect_boxes[image_index] = np.append(all_detect_boxes[image_index], detection_boxes)
             print(all_detect_scores[image_index].shape, all_detect_classes[image_index].shape, all_detect_boxes[image_index].shape)
             exit()
 
