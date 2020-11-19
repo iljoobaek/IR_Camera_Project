@@ -187,9 +187,9 @@ def main(_):
                # "set02": "/home/rtml/Documents/weichen/Datasets/CMU/",
                # "set03": "/home/rtml/Documents/weichen/Datasets/CMU/",
                # "set04": "/home/rtml/Documents/weichen/Datasets/CMU/",
-               "set05_R": "/home/rtml/Documents/weichen/Datasets/CMU/",
-               "set06-13_selected_R": "/home/rtml/Documents/weichen/Datasets/CMU/",
-               "set14-17_partial_R": "/home/rtml/Documents/weichen/Datasets/CMU/",
+               "set05_L": "/home/rtml/Documents/weichen/Datasets/CMU/",
+               "set_selected": "/home/rtml/Documents/weichen/Datasets/CMU/",
+               "set14-17_partial": "/home/rtml/Documents/weichen/Datasets/CMU/",
                #"setxx_cmu00-05-selected_split2": "/home/rtml/Documents/weichen/Datasets/CMU/",
                }
 
