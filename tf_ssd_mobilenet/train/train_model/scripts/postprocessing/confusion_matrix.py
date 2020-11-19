@@ -165,46 +165,6 @@ def process_detections_2(detections_record1, detections_record2, categories):
             # print(detection_scores.shape, detection_classes.shape, detection_boxes.shape)
             # exit()
 
-            '''
-            matches = []
-
-            if image_index % 100 == 0:
-                print("Processed %d images" % (image_index))
-
-            for i in range(len(groundtruth_boxes)):
-                for j in range(len(detection_boxes)):
-                    iou = compute_iou(groundtruth_boxes[i], detection_boxes[j])
-
-                    if iou > IOU_THRESHOLD:
-                        matches.append([i, j, iou])
-
-            matches = np.array(matches)
-            if matches.shape[0] > 0:
-                # Sort list of matches by descending IOU so we can remove duplicate detections
-                # while keeping the highest IOU entry.
-                matches = matches[matches[:, 2].argsort()[::-1][:len(matches)]]
-
-                # Remove duplicate detections from the list.
-                matches = matches[np.unique(matches[:, 1], return_index=True)[1]]
-
-                # Sort the list again by descending IOU. Removing duplicates doesn't preserve
-                # our previous sort.
-                matches = matches[matches[:, 2].argsort()[::-1][:len(matches)]]
-
-                # Remove duplicate ground truths from the list.
-                matches = matches[np.unique(matches[:, 0], return_index=True)[1]]
-
-            for i in range(len(groundtruth_boxes)):
-                if matches.shape[0] > 0 and matches[matches[:, 0] == i].shape[0] == 1:
-                    confusion_matrix[groundtruth_classes[i] - 1][
-                        detection_classes[int(matches[matches[:, 0] == i, 1][0])] - 1] += 1
-                else:
-                    confusion_matrix[groundtruth_classes[i] - 1][confusion_matrix.shape[1] - 1] += 1
-
-            for i in range(len(detection_boxes)):
-                if matches.shape[0] > 0 and matches[matches[:, 1] == i].shape[0] == 0:
-                    confusion_matrix[confusion_matrix.shape[0] - 1][detection_classes[i] - 1] += 1
-            '''
         else:
             print("Skipped image %d" % (image_index))
 
@@ -217,8 +177,8 @@ def process_detections_2(detections_record1, detections_record2, categories):
         # print(decoded_dict)
 
         if decoded_dict:
-            print(all_detect_scores[image_index].shape, all_detect_classes[image_index].shape,
-                  all_detect_boxes[image_index].shape)
+            # print(all_detect_scores[image_index].shape, all_detect_classes[image_index].shape,
+            #       all_detect_boxes[image_index].shape)
 
             detection_scores = decoded_dict[standard_fields.DetectionResultFields.detection_scores]
             detection_classes = decoded_dict[standard_fields.DetectionResultFields.detection_classes][
@@ -228,15 +188,52 @@ def process_detections_2(detections_record1, detections_record2, categories):
             all_detect_scores[image_index] = np.append(all_detect_scores[image_index], detection_scores, 0)
             all_detect_classes[image_index] = np.append(all_detect_classes[image_index], detection_classes, 0)
             all_detect_boxes[image_index] = np.append(all_detect_boxes[image_index], detection_boxes, 0)
-            print(all_detect_scores[image_index].shape, all_detect_classes[image_index].shape, all_detect_boxes[image_index].shape)
-            exit()
+            # print(all_detect_scores[image_index].shape, all_detect_classes[image_index].shape, all_detect_boxes[image_index].shape)
+            # exit()
 
         else:
             print("Skipped image %d" % (image_index))
         image_index += 1
 
     for idx in range(len(all_gt_boxes)):
-        pass
+        matches = []
+
+        if image_index % 100 == 0:
+            print("Processed %d images" % (image_index))
+
+        for i in range(len(all_gt_boxes[idx])):
+            for j in range(len(all_detect_boxes[idx])):
+                iou = compute_iou(all_gt_boxes[idx][i], all_detect_boxes[idx][j])
+
+                if iou > IOU_THRESHOLD:
+                    matches.append([i, j, iou])
+
+        matches = np.array(matches)
+        if matches.shape[0] > 0:
+            # Sort list of matches by descending IOU so we can remove duplicate detections
+            # while keeping the highest IOU entry.
+            matches = matches[matches[:, 2].argsort()[::-1][:len(matches)]]
+
+            # Remove duplicate detections from the list.
+            matches = matches[np.unique(matches[:, 1], return_index=True)[1]]
+
+            # Sort the list again by descending IOU. Removing duplicates doesn't preserve
+            # our previous sort.
+            matches = matches[matches[:, 2].argsort()[::-1][:len(matches)]]
+
+            # Remove duplicate ground truths from the list.
+            matches = matches[np.unique(matches[:, 0], return_index=True)[1]]
+
+        for i in range(len(all_gt_boxes[idx])):
+            if matches.shape[0] > 0 and matches[matches[:, 0] == i].shape[0] == 1:
+                confusion_matrix[all_gt_classes[idx][i] - 1][
+                    all_detect_classes[idx][int(matches[matches[:, 0] == i, 1][0])] - 1] += 1
+            else:
+                confusion_matrix[all_gt_classes[idx][i] - 1][confusion_matrix.shape[1] - 1] += 1
+
+        for i in range(len(all_detect_boxes[idx])):
+            if matches.shape[0] > 0 and matches[matches[:, 1] == i].shape[0] == 0:
+                confusion_matrix[confusion_matrix.shape[0] - 1][all_detect_classes[idx][i] - 1] += 1
 
     print("Processed %d images" % (image_index))
 
