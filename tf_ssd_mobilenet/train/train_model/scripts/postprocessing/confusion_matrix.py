@@ -14,6 +14,7 @@ flags = tf.app.flags
 
 flags.DEFINE_string('label_map', None, 'Path to the label map')
 flags.DEFINE_string('detections_record', None, 'Path to the detections record file')
+flags.DEFINE_string('detections_record2', None, 'Path to the detections record file')
 flags.DEFINE_string('output_path', None, 'Path to the output the results in a csv.')
 flags.DEFINE_string('pipeline_config_path', None, 'Path to the output the results in a csv.')
 
@@ -277,7 +278,7 @@ def main(argv):
     categories = label_map_util.convert_label_map_to_categories(label_map, max_num_classes=100, use_display_name=True)
 
     # confusion_matrix = process_detections(FLAGS.detections_record, categories)
-    confusion_matrix = process_detections_2(FLAGS.detections_record, FLAGS.detections_record, categories)
+    confusion_matrix = process_detections_2(FLAGS.detections_record, FLAGS.detections_record2, categories)
 
     display(confusion_matrix, categories, FLAGS.output_path)    
     
