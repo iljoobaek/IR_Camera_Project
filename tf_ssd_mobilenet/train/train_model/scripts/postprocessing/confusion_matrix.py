@@ -215,7 +215,7 @@ def process_detections_2(detections_record1, detections_record2, categories):
             matches = matches[matches[:, 2].argsort()[::-1][:len(matches)]]
 
             # Remove duplicate detections from the list.
-            # matches = matches[np.unique(matches[:, 1], return_index=True)[1]]
+            matches = matches[np.unique(matches[:, 1], return_index=True)[1]]
 
             # Sort the list again by descending IOU. Removing duplicates doesn't preserve
             # our previous sort.
