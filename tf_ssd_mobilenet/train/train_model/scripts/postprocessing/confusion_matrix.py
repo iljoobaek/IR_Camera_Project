@@ -77,8 +77,8 @@ def process_detections(detections_record, categories):
             if image_index % 100 == 0:
                 print("Processed %d images" %(image_index))
             
-            for i in range(len(groundtruth_boxes)):
-                for j in range(len(detection_boxes)):
+            for i in range(len(groundtruth_boxes)): #9
+                for j in range(len(detection_boxes)): #100
                     iou = compute_iou(groundtruth_boxes[i], detection_boxes[j])
                     
                     if iou > IOU_THRESHOLD:
