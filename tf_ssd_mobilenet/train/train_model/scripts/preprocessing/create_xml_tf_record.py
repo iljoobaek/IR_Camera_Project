@@ -167,12 +167,12 @@ def main(_):
   # label_map_dict['bicycle'] = 3
   # label_map_dict['motorcycle'] = 3
   label_map_dict['END'] = 0
-  label_map_dict['bicycle'] = 2
-  label_map_dict['motorcycle'] = 2
+  label_map_dict['bicycle'] = 1
+  label_map_dict['motorcycle'] = 1
   label_map_dict['car'] = 2
-  label_map_dict['pedestrian'] = 1
-  label_map_dict['person'] = 1
-  label_map_dict['cyclist'] = 2
+  label_map_dict['pedestrian'] = 2
+  label_map_dict['person'] = 2
+  label_map_dict['cyclist'] = 1
   label_map_dict['van'] = 2
   label_map_dict['truck'] = 2
   label_map_dict['bus'] = 2
