@@ -228,8 +228,8 @@ def process_detections_2(detections_record1, detections_record2, categories):
         # print(decoded_dict)
 
         if decoded_dict:
-            # print(all_detect_scores[image_index].shape, all_detect_classes[image_index].shape,
-            #       all_detect_boxes[image_index].shape)
+            print(all_detect_scores[image_index].shape, all_detect_classes[image_index].shape,
+                  all_detect_boxes[image_index].shape)
 
             detection_scores = decoded_dict[standard_fields.DetectionResultFields.detection_scores]
             detection_classes = decoded_dict[standard_fields.DetectionResultFields.detection_classes][
@@ -239,8 +239,8 @@ def process_detections_2(detections_record1, detections_record2, categories):
             all_detect_scores[image_index] = np.append(all_detect_scores[image_index], detection_scores, 0)
             all_detect_classes[image_index] = np.append(all_detect_classes[image_index], detection_classes, 0)
             all_detect_boxes[image_index] = np.append(all_detect_boxes[image_index], detection_boxes, 0)
-            # print(all_detect_scores[image_index].shape, all_detect_classes[image_index].shape, all_detect_boxes[image_index].shape)
-            # exit()
+            print(all_detect_scores[image_index].shape, all_detect_classes[image_index].shape, all_detect_boxes[image_index].shape)
+            exit()
 
         else:
             print("Skipped image %d" % (image_index))
