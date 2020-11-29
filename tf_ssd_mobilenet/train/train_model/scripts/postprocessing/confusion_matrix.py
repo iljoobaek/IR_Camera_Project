@@ -253,6 +253,7 @@ def process_detections_2(detections_record1, detections_record2, categories):
         detection_boxes = all_detect_boxes[idx]
         groundtruth_boxes = all_gt_boxes[idx]
         groundtruth_classes = all_gt_classes[idx]
+        print(detection_scores.shape, detection_classes.shape, detection_boxes.shape)
         detection_classes, detection_scores, detection_boxes = bboxes_sort(detection_classes, detection_scores, detection_boxes, 100)
 
         matches = []
