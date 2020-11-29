@@ -261,6 +261,7 @@ def process_detections_2(detections_record1, detections_record2, categories):
         detection_classes, detection_scores, detection_boxes = bboxes_sort(detection_classes, detection_scores, detection_boxes, 100)
         detection_boxes = detection_boxes[detection_scores >= CONFIDENCE_THRESHOLD]
         detection_classes = detection_classes[detection_scores >= CONFIDENCE_THRESHOLD]
+        detection_classes, detection_scores, detection_boxes = bboxes_nms(detection_classes, detection_scores, detection_boxes)
 
         matches = []
 
