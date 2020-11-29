@@ -121,7 +121,7 @@ class ObjectDetector(object):
         """ Destructor"""
         self._sess.close()
 
-    def detect(self, image):
+    def detect(self, image, imgr):
         """ Detect objects in image.
         Args:
             image: a uint8 [height, width, depth] array representing the image.
@@ -133,9 +133,17 @@ class ObjectDetector(object):
              self._detection_dict['detection_scores'],
              self._detection_dict['detection_classes']],
             feed_dict={self._image:image})
+        rbboxesr, rscoresr, rclassesr = self._sess.run(
+            [self._detection_dict['detection_boxes'],
+             self._detection_dict['detection_scores'],
+             self._detection_dict['detection_classes']],
+            feed_dict={self._image: imgr})
         t0 = time.time() - t0
         print("inference time: %f" % t0)
 
+        rbboxes = np.append(rbboxes, rbboxesr, 1)
+        rscores = np.append(rscores, rscoresr, 1)
+        rclasses = np.append(rclasses, rclassesr, 1)
         print(type(rbboxes))
         print(rbboxes.shape, rscores.shape, rclasses.shape)
         exit()
@@ -267,7 +275,7 @@ if __name__ == '__main__':
         if img is None:
             break
         height, width, channels = img.shape
-        img = detector.detect(img)
+        img = detector.detect(img, img)
         cv2.imwrite(os.path.join(output_dir, target + '_' + example + ".jpeg"), img)
         #timing
         frame_ctr = frame_ctr + 1
