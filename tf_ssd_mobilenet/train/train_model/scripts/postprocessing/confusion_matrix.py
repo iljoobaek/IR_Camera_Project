@@ -259,9 +259,10 @@ def process_detections_2(detections_record1, detections_record2, categories):
         groundtruth_classes = all_gt_classes[idx]
         # print(detection_scores.shape, detection_classes.shape, detection_boxes.shape)
         detection_classes, detection_scores, detection_boxes = bboxes_sort(detection_classes, detection_scores, detection_boxes, 100)
+        detection_classes, detection_scores, detection_boxes = bboxes_nms(detection_classes, detection_scores,
+                                                                          detection_boxes)
         detection_boxes = detection_boxes[detection_scores >= CONFIDENCE_THRESHOLD]
         detection_classes = detection_classes[detection_scores >= CONFIDENCE_THRESHOLD]
-        detection_classes, detection_scores, detection_boxes = bboxes_nms(detection_classes, detection_scores, detection_boxes)
 
         matches = []
 
