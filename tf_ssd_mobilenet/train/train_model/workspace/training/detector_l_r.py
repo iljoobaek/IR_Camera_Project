@@ -144,9 +144,9 @@ class ObjectDetector(object):
         rbboxes = np.append(rbboxes, rbboxesr, 1)
         rscores = np.append(rscores, rscoresr, 1)
         rclasses = np.append(rclasses, rclassesr, 1)
-        print(type(rbboxes))
-        print(rbboxes.shape, rscores.shape, rclasses.shape)
-        exit()
+        # print(type(rbboxes))
+        # print(rbboxes.shape, rscores.shape, rclasses.shape)
+        # exit()
 
         # numpy NMS method
         rbboxes, rscores, rclasses = self._np_nms(rbboxes,rscores)
