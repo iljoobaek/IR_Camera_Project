@@ -116,6 +116,56 @@ def process_detections(detections_record, categories):
 
     return confusion_matrix
 
+def bboxes_sort(classes, scores, bboxes, top_k=400):
+    """Sort bounding boxes by decreasing order and keep only the top_k
+    """
+    # if priority_inside:
+    #     inside = (bboxes[:, 0] > margin) & (bboxes[:, 1] > margin) & \
+    #         (bboxes[:, 2] < 1-margin) & (bboxes[:, 3] < 1-margin)
+    #     idxes = np.argsort(-scores)
+    #     inside = inside[idxes]
+    #     idxes = np.concatenate([idxes[inside], idxes[~inside]])
+    idxes = np.argsort(-scores)
+    classes = classes[idxes][:top_k]
+    scores = scores[idxes][:top_k]
+    bboxes = bboxes[idxes][:top_k]
+    return classes, scores, bboxes
+
+def bboxes_jaccard(bboxes1, bboxes2):
+    """Computing jaccard index between bboxes1 and bboxes2.
+    Note: bboxes1 and bboxes2 can be multi-dimensional, but should broacastable.
+    """
+    bboxes1 = np.transpose(bboxes1)
+    bboxes2 = np.transpose(bboxes2)
+    # Intersection bbox and volume.
+    int_ymin = np.maximum(bboxes1[0], bboxes2[0])
+    int_xmin = np.maximum(bboxes1[1], bboxes2[1])
+    int_ymax = np.minimum(bboxes1[2], bboxes2[2])
+    int_xmax = np.minimum(bboxes1[3], bboxes2[3])
+
+    int_h = np.maximum(int_ymax - int_ymin, 0.)
+    int_w = np.maximum(int_xmax - int_xmin, 0.)
+    int_vol = int_h * int_w
+    # Union volume.
+    vol1 = (bboxes1[2] - bboxes1[0]) * (bboxes1[3] - bboxes1[1])
+    vol2 = (bboxes2[2] - bboxes2[0]) * (bboxes2[3] - bboxes2[1])
+    jaccard = int_vol / (vol1 + vol2 - int_vol)
+    return jaccard
+
+def bboxes_nms(classes, scores, bboxes, nms_threshold=0.45):
+    """Apply non-maximum selection to bounding boxes.
+    """
+    keep_bboxes = np.ones(scores.shape, dtype=np.bool)
+    for i in range(scores.size-1):
+        if keep_bboxes[i]:
+            # Computer overlap with bboxes which are following.
+            overlap = bboxes_jaccard(bboxes[i], bboxes[(i+1):])
+            # Overlap threshold for keeping + checking part of the same class
+            keep_overlap = np.logical_or(overlap < nms_threshold, classes[(i+1):] != classes[i])
+            keep_bboxes[(i+1):] = np.logical_and(keep_bboxes[(i+1):], keep_overlap)##
+
+    idxes = np.where(keep_bboxes)
+    return classes[idxes], scores[idxes], bboxes[idxes]
 
 def process_detections_2(detections_record1, detections_record2, categories):
     record_iterator1 = tf.python_io.tf_record_iterator(path=detections_record1)
@@ -197,14 +247,22 @@ def process_detections_2(detections_record1, detections_record2, categories):
         image_index += 1
 
     for idx in range(len(all_gt_boxes)):
+
+        detection_scores = all_detect_scores[idx]
+        detection_classes = all_detect_classes[idx]
+        detection_boxes = all_detect_boxes[idx]
+        groundtruth_boxes = all_gt_boxes[idx]
+        groundtruth_classes = all_gt_classes[idx]
+        detection_classes, detection_scores, detection_boxes = bboxes_sort(detection_classes, detection_scores, detection_boxes, 100)
+
         matches = []
 
         if idx % 100 == 0:
-            print("Processed %d images" % (idx))
+            print("Processed %d images" % (image_index))
 
-        for i in range(len(all_gt_boxes[idx])):
-            for j in range(len(all_detect_boxes[idx])):
-                iou = compute_iou(all_gt_boxes[idx][i], all_detect_boxes[idx][j])
+        for i in range(len(groundtruth_boxes)):  # 9
+            for j in range(len(detection_boxes)):  # 100
+                iou = compute_iou(groundtruth_boxes[i], detection_boxes[j])
 
                 if iou > IOU_THRESHOLD:
                     matches.append([i, j, iou])
@@ -225,16 +283,16 @@ def process_detections_2(detections_record1, detections_record2, categories):
             # Remove duplicate ground truths from the list.
             matches = matches[np.unique(matches[:, 0], return_index=True)[1]]
 
-        for i in range(len(all_gt_boxes[idx])):
+        for i in range(len(groundtruth_boxes)):
             if matches.shape[0] > 0 and matches[matches[:, 0] == i].shape[0] == 1:
-                confusion_matrix[all_gt_classes[idx][i] - 1][
-                    all_detect_classes[idx][int(matches[matches[:, 0] == i, 1][0])] - 1] += 1
+                confusion_matrix[groundtruth_classes[i] - 1][
+                    detection_classes[int(matches[matches[:, 0] == i, 1][0])] - 1] += 1
             else:
-                confusion_matrix[all_gt_classes[idx][i] - 1][confusion_matrix.shape[1] - 1] += 1
+                confusion_matrix[groundtruth_classes[i] - 1][confusion_matrix.shape[1] - 1] += 1
 
-        for i in range(len(all_detect_boxes[idx])):
+        for i in range(len(detection_boxes)):
             if matches.shape[0] > 0 and matches[matches[:, 1] == i].shape[0] == 0:
-                confusion_matrix[confusion_matrix.shape[0] - 1][all_detect_classes[idx][i] - 1] += 1
+                confusion_matrix[confusion_matrix.shape[0] - 1][detection_classes[i] - 1] += 1
 
     print("Processed %d images" % (idx))
 
