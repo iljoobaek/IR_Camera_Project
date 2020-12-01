@@ -277,6 +277,7 @@ if __name__ == '__main__':
         examplel[2] = 'R'
         examplel = '_'.join(examplel)
         imgr = cv2.imread(os.path.join(img_path_l, examplel + '.jpeg'))
+        print(os.path.join(img_path_l, examplel + '.jpeg'))
         # exit()
         # print(img_path + example + '.jpeg')
         if img is None:
