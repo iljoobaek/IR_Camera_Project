@@ -3,7 +3,7 @@ export PYTHONPATH=$PYTHONPATH:../../models/research/:../../models/research/slim
 
 BASE_PATH=/home/rtml/Documents/weichen/Datasets/CMU/Preprocessing/
 TARGET_PATH=set25_R
-python detector.py ${BASE_PATH} \
+python detector_l_r.py ${BASE_PATH} \
                     ${TARGET_PATH} \
                     ./detection/0827_set25mb1_ll_1129
 
