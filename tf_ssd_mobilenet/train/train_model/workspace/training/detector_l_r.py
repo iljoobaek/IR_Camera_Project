@@ -274,15 +274,15 @@ if __name__ == '__main__':
     #     print(example)
         img = cv2.imread(os.path.join(img_path, example + '.jpeg'))
         examplel = example.split('_')
-        examplel[2] = 'L'
+        examplel[2] = 'R'
         examplel = '_'.join(examplel)
-        imgl = cv2.imread(os.path.join(img_path_l, examplel + '.jpeg'))
+        imgr = cv2.imread(os.path.join(img_path_l, examplel + '.jpeg'))
         # exit()
         # print(img_path + example + '.jpeg')
         if img is None:
             break
         height, width, channels = img.shape
-        img = detector.detect(imgl, imgl)
+        img = detector.detect(img, img)
         cv2.imwrite(os.path.join(output_dir, target + '_' + example + ".jpeg"), img)
         #timing
         frame_ctr = frame_ctr + 1
