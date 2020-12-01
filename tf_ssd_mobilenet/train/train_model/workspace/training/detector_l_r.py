@@ -256,7 +256,7 @@ if __name__ == '__main__':
     base_path = sys.argv[1]
     target = sys.argv[2]
     img_path = os.path.join(base_path, 'Images', target)
-    img_path_l = os.path.join(base_path, 'Images', target.split('_')[0] + '_L')
+    img_path_l = os.path.join(base_path, 'Images', target.split('_')[0] + '_R')
     output_dir = sys.argv[3]
 
     frame_ctr = 0
@@ -282,7 +282,7 @@ if __name__ == '__main__':
         if img is None:
             break
         height, width, channels = img.shape
-        img = detector.detect(img, img)
+        img = detector.detect(imgr, imgr)
         cv2.imwrite(os.path.join(output_dir, target + '_' + example + ".jpeg"), img)
         #timing
         frame_ctr = frame_ctr + 1
