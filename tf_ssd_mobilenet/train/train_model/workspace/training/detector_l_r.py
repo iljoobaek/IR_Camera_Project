@@ -294,7 +294,7 @@ if __name__ == '__main__':
         if img is None:
             break
         height, width, channels = img.shape
-        img = detector.detect(imgl, img)
+        img = detector.detect(imgl, imgl)
         cv2.imwrite(os.path.join(output_dir, target + '_' + example + ".jpeg"), img)
         #timing
         frame_ctr = frame_ctr + 1
