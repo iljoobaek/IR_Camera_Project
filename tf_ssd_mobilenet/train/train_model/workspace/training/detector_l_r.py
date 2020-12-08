@@ -267,7 +267,7 @@ if __name__ == '__main__':
     base_path = sys.argv[1]
     target = sys.argv[2]
     img_path = os.path.join(base_path, 'Images', target)
-    img_path_r = os.path.join(base_path, 'Images', target.split('_')[0] + '_R')
+    img_path_l = os.path.join(base_path, 'Images', target.split('_')[0] + '_L')
     output_dir = sys.argv[3]
 
     frame_ctr = 0
@@ -287,7 +287,7 @@ if __name__ == '__main__':
         examplel = example.split('_')
         examplel[2] = 'R'
         examplel = '_'.join(examplel)
-        imgr = cv2.imread(os.path.join(img_path_r, examplel + '.jpeg'))
+        imgl = cv2.imread(os.path.join(img_path_l, examplel + '.jpeg'))
         # print(os.path.join(img_path_l, examplel + '.jpeg'))
         # exit()
         # print(img_path + example + '.jpeg')
