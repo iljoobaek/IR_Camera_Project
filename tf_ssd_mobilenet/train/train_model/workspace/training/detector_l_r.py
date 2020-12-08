@@ -285,7 +285,7 @@ if __name__ == '__main__':
     #     print(example)
         img = cv2.imread(os.path.join(img_path, example + '.jpeg'))
         examplel = example.split('_')
-        examplel[2] = 'R'
+        examplel[2] = 'L'
         examplel = '_'.join(examplel)
         imgl = cv2.imread(os.path.join(img_path_l, examplel + '.jpeg'))
         # print(os.path.join(img_path_l, examplel + '.jpeg'))
