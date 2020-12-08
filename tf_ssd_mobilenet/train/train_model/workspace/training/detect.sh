@@ -5,5 +5,5 @@ BASE_PATH=/home/rtml/Documents/weichen/Datasets/CMU/Preprocessing/
 TARGET_PATH=setxx3_L
 python detector_l_r.py ${BASE_PATH} \
                     ${TARGET_PATH} \
-                    ./detection/0827_setxx3mb1_rl_1129
+                    ./detection/0827_setxx3mb1_rr_1208
 

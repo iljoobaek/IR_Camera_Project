@@ -209,8 +209,19 @@ class ObjectDetector(object):
         #                     0.5,    #Bike
         #                     0.5,    #Moter
         #                     ),
+        select_threshold=(
+                            0.7,    #Car
+                            0.5,    #Pedestrian
+                            0.5,    #Cyclist
+                            0.5,    #Van
+                            0.5,    #Truck
+                            0.5,    #Bus
+                            0.5,    #Animal
+                            0.5,    #Traffic_cone
+                            0.5,    #Channelizer
+                            ),
         # select_threshold=(0.5,)*16,
-        select_threshold=(0.5,)*9,
+        # select_threshold=(0.5,)*9,
         # select_threshold=0.5,
         nms_threshold=0.1):
         # Get classes and bboxes from the net outputs.
