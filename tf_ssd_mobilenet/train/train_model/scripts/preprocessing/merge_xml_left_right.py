@@ -74,14 +74,15 @@ def main():
         # print(img_path + i_path.split('.')[0] + '.jpeg', global_cnt)
         # img = cv2.imread(img_path + i_path.split('.')[0] + '.jpeg')
         # height, width, channels = img.shape
-
+        if 'global' in i_path:
+            continue
         name_in = i_path.split('.')[0]
         name = name_in.split('_')
         name_out = '_'.join(['cmu', 'set00'] + name)
         inpath = anno_path + name_in + '.xml'
         outpath = out_path + name_out + '.xml'
-        print(inpath, outpath)
-        # boxes, global_cnt = get_box_from_xml(boxes, inpath, global_cnt)
+        # print(inpath, outpath)
+        boxes, global_cnt = get_box_from_xml(boxes, inpath, global_cnt)
         # if not os.path.exists(inpath):
         #     print(inpath, "not exist")
         #     continue
@@ -90,7 +91,7 @@ def main():
         # boxes, global_cnt = get_box_from_xml(boxes, anno_path2 + i_path.split('.')[0] + '.xml', global_cnt)
         # print(img_path + i_path.split('.')[0] + '.jpeg')
         height, width = 512, 640
-        # txt2xml.write_box_to_xml (boxes, out_path, out_path + i_path.split('.')[0] + '.xml', (height, width), img_path)
+        txt2xml.write_box_to_xml (boxes, out_path, outpath, (height, width), img_path)
         # print(i_path.split('.')[0], global_cnt)
 
 
