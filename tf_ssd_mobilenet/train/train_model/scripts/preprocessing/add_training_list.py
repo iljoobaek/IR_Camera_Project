@@ -25,6 +25,7 @@ if __name__ == '__main__' :
     out_path_train = sys.argv[4]
     out_path_test = sys.argv[5]
 
+    print(len(os.listdir(img_path)))
     all_images = []
     for name in sorted(os.listdir(img_path)):
         if check_num_obj(osp.join(anno_path, name.split(".")[0] + ".xml")): all_images.append(name)
