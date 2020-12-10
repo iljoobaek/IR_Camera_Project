@@ -1,6 +1,6 @@
 export PYTHONPATH=$PYTHONPATH:../../models/research/:../../models/research/slim
 # env: tfmobile_py2
-BASE_PATH=../Datasets/CMU/
+BASE_PATH=/home/rtml/Documents/weichen/Datasets/CMU
 IMG_PATH=${BASE_PATH}/Preprocessing/Images/set_merged/
 OUT_PATH=${BASE_PATH}/Preprocessing/Annotations/set_merged/
 IN_PATH1=${BASE_PATH}/Preprocessing/Annotations/set00/
