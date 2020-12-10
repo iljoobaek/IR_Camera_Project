@@ -76,6 +76,7 @@ def main():
         anno_path = in_path[0]
         boxes, global_cnt = get_box_from_xml(boxes, anno_path + i_path.split('.')[0] + '.xml', global_cnt)
         if not os.path.exists(anno_path + i_path.split('.')[0] + '.xml'):
+            print(anno_path + i_path.split('.')[0] + '.xml', "not exist")
             continue
         # boxes, global_cnt = get_box_from_xml(boxes, anno_path0 + i_path.split('.')[0] + '.xml', global_cnt)
         # boxes, global_cnt = get_box_from_xml(boxes, anno_path1 + i_path.split('.')[0] + '.xml', global_cnt)
