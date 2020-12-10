@@ -50,9 +50,9 @@ def get_box_from_xml (boxes, xml_path, cnt, keep_difficult=False) :
 
 
 def main():
-    if len(sys.argv) < 5:
-        print("Usage: python combine_xml.py img_path out_path in_path1 in_path2 ...")
-        exit()
+    # if len(sys.argv) < 5:
+    #     print("Usage: python combine_xml.py img_path out_path in_path1 in_path2 ...")
+    #     exit()
     img_path = sys.argv[1]
     out_path = sys.argv[2]
     in_path = []
