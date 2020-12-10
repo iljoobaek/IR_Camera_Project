@@ -6,7 +6,7 @@ from xml.etree import ElementTree
 import txt2xml
 
 
-classname = {"car": 0, "pedestrian": 1, "cyclist": 2, "van": 3, "truck": 4, "bus": 5, "animal": 6, "traffic_cone": 7, "channelizer": 8, "person": 1, "bicycle": 2, "dog": 6}
+classname = {"car": 0, "pedestrian": 1, "cyclist": 2, "van": 3, "truck": 4, "bus": 5, "animal": 6, "traffic_cone": 7, "channelizer": 8, "person": 1, "bicycle": 2, "dog": 6, "motorcycle": 2}
 classind = {0: "car", 1: "pedestrian", 2: "cyclist", 3: "van", 4: "truck", 5: "bus", 6: "animal", 7: "traffic_cone", 8: "channelizer"}
 
 
@@ -40,6 +40,8 @@ def get_box_from_xml (boxes, xml_path, cnt, keep_difficult=False) :
         bndbox[2] = bndbox[2] - bndbox[0]
         bndbox[3] = bndbox[3] - bndbox[1]
         #print(bndbox)
+        if name == 'end':
+            break
         bbox = txt2xml.Bbox(classind[classname[name]], cnt, bndbox, difficult)
         cnt += 1
         boxes.append(bbox)
@@ -78,7 +80,8 @@ def main():
             continue
         name_in = i_path.split('.')[0]
         name = name_in.split('_')
-        name_out = '_'.join(['cmu', 'set02'] + name)
+        #name_out = '_'.join(['cmu', 'set05'] + name)
+        name_out = '_'.join(name[:2] + name[3:])
         inpath = anno_path + name_in + '.xml'
         outpath = out_path + name_out + '.xml'
         # print(inpath, outpath)
