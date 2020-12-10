@@ -1,6 +1,6 @@
 # env: tfmobile_py2
 BASE_PATH=../../../../../../Datasets/CMU/
-NAME=set14-17_partial
+NAME=set_merged
 IMG_PATH=${BASE_PATH}Preprocessing/Images/${NAME}/
 ANNO_PATH=${BASE_PATH}Preprocessing/Annotations/${NAME}/
 OUT_PATH_all=${BASE_PATH}Preprocessing/ImageLists/${NAME}.txt
