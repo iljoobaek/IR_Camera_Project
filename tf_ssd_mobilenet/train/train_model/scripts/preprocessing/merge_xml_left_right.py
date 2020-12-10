@@ -73,8 +73,13 @@ def main():
         # print(img_path + i_path.split('.')[0] + '.jpeg', global_cnt)
         # img = cv2.imread(img_path + i_path.split('.')[0] + '.jpeg')
         # height, width, channels = img.shape
-        anno_path = in_path[0]
-        boxes, global_cnt = get_box_from_xml(boxes, anno_path + i_path.split('.')[0] + '.xml', global_cnt)
+        name = i_path.split('.')[0]
+        if 'set00' not in name:
+            break
+        name = name.split('_')
+        name = '_'.join(name[2:])
+        anno_path = in_path[0] + name + '.xml'
+        boxes, global_cnt = get_box_from_xml(boxes, anno_path, global_cnt)
         if not os.path.exists(anno_path + i_path.split('.')[0] + '.xml'):
             print(anno_path + i_path.split('.')[0] + '.xml', "not exist")
             continue
