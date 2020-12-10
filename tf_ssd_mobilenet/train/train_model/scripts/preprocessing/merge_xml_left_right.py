@@ -68,17 +68,20 @@ def main():
         os.mkdir(out_path)
     for i_path in sorted(os.listdir(img_path)):
         boxes = []
-        if not os.path.exists(img_path + i_path.split('.')[0] + '.jpeg'):
-            print("Not exist")
-        print(img_path + i_path.split('.')[0] + '.jpeg', global_cnt)
-        img = cv2.imread(img_path + i_path.split('.')[0] + '.jpeg')
-        height, width, channels = img.shape
-        for anno_path in in_path:
-            boxes, global_cnt = get_box_from_xml(boxes, anno_path + i_path.split('.')[0] + '.xml', global_cnt)
+        # if not os.path.exists(img_path + i_path.split('.')[0] + '.jpeg'):
+        #     print("Not exist")
+        # print(img_path + i_path.split('.')[0] + '.jpeg', global_cnt)
+        # img = cv2.imread(img_path + i_path.split('.')[0] + '.jpeg')
+        # height, width, channels = img.shape
+        anno_path = in_path[0]
+        boxes, global_cnt = get_box_from_xml(boxes, anno_path + i_path.split('.')[0] + '.xml', global_cnt)
+        if not os.path.exists(anno_path + i_path.split('.')[0] + '.xml'):
+            continue
         # boxes, global_cnt = get_box_from_xml(boxes, anno_path0 + i_path.split('.')[0] + '.xml', global_cnt)
         # boxes, global_cnt = get_box_from_xml(boxes, anno_path1 + i_path.split('.')[0] + '.xml', global_cnt)
         # boxes, global_cnt = get_box_from_xml(boxes, anno_path2 + i_path.split('.')[0] + '.xml', global_cnt)
         # print(img_path + i_path.split('.')[0] + '.jpeg')
+        height, width = 512, 640
         txt2xml.write_box_to_xml (boxes, out_path, out_path + i_path.split('.')[0] + '.xml', (height, width), img_path)
         # print(i_path.split('.')[0], global_cnt)
 
