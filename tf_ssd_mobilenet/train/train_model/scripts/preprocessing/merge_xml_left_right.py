@@ -68,6 +68,8 @@ def main():
         os.mkdir(out_path)
     for i_path in sorted(os.listdir(img_path)):
         boxes = []
+        if not os.path.exists(img_path + i_path.split('.')[0] + '.jpeg'):
+            print("Not exist")
         print(img_path + i_path.split('.')[0] + '.jpeg', global_cnt)
         img = cv2.imread(img_path + i_path.split('.')[0] + '.jpeg')
         height, width, channels = img.shape
