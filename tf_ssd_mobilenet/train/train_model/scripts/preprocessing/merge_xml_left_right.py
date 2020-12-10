@@ -78,7 +78,7 @@ def main():
             continue
         name_in = i_path.split('.')[0]
         name = name_in.split('_')
-        name_out = '_'.join(['cmu', 'set01'] + name)
+        name_out = '_'.join(['cmu', 'set02'] + name)
         inpath = anno_path + name_in + '.xml'
         outpath = out_path + name_out + '.xml'
         # print(inpath, outpath)
