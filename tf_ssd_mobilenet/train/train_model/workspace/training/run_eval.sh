@@ -1,5 +1,5 @@
 export PYTHONPATH=$PYTHONPATH:../../models/research/:../../models/research/slim
-export CUDA_VISIBLE_DEVICES=1
+export CUDA_VISIBLE_DEVICES=0
 
 #python eval.py --eval_dir=./eval/eval_faster_rcnn_inception_resnet_v2_CMU00-05-selected_0810/ \
 #                --checkpoint_dir=./training/train_faster_rcnn_inception_resnet_v2_CMU00-05-selected_0810/ \
@@ -9,6 +9,6 @@ export CUDA_VISIBLE_DEVICES=1
 #                --checkpoint_dir=./training/train_ssd_mobilenet_v2_FLIR_CMU00-05-selected_all_0907/ \
 #                --pipeline_config_path=./configs/ssd_mobilenet_v2.config
 
-python eval.py --eval_dir=./eval/eval_ssd_mobilenet_v1_FLIR_CMU00-05-selected_all_1203/ \
-                --checkpoint_dir=./training/train_ssd_mobilenet_v1_FLIR_CMU00-05-selected_all_1203/ \
+python eval.py --eval_dir=./eval/eval_ssd_mobilenet_v1_FLIR_CMU00-05-selected_all_1216/ \
+                --checkpoint_dir=./training/train_ssd_mobilenet_v1_FLIR_CMU00-05-selected_all_1216/ \
                 --pipeline_config_path=./configs/ssd_mobilenet_v1.config
