@@ -190,7 +190,7 @@ def main(_):
                #"set05_L": "/home/rtml/Documents/weichen/Datasets/CMU/",
                #"set_selected": "/home/rtml/Documents/weichen/Datasets/CMU/",
                #"set14-17_partial": "/home/rtml/Documents/weichen/Datasets/CMU/",
-               "set_merged": "/home/droid/Documents/weichen/Datasets/CMU/",
+               "set_merged_homo": "/home/droid/Documents/weichen/Datasets/CMU/",
                # "set27": "/home/rtml/Documents/weichen/Datasets/CMU/",
                #"setxx_cmu00-05-selected_split2": "/home/rtml/Documents/weichen/Datasets/CMU/",
                }
