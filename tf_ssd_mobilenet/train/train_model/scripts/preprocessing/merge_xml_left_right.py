@@ -45,7 +45,7 @@ def get_box_from_xml (boxes, xml_path, cnt, keep_difficult=False) :
         bbox = txt2xml.Bbox(classind[classname[name]], cnt, bndbox, difficult)
         cnt += 1
         boxes.append(bbox)
-        bndbox[2] += 640
+        bndbox[0] += 640
         bbox = txt2xml.Bbox(classind[classname[name]], cnt, bndbox, difficult)
         boxes.append(bbox)
     return boxes, cnt
