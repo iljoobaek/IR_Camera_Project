@@ -257,9 +257,9 @@ class ObjectDetector(object):
 
 if __name__ == '__main__':
     checkpoint_path = os.path.join(dirname,
-        'training/train_ssd_mobilenet_v1_FLIR_CMU00-05-selected_all_0814/model.ckpt-350000')
+        'training/train_ssd_mobilenet_v1_FLIR_CMU00-05-selected_all_0825/model.ckpt-300000')
     pipeline_config_path = os.path.join(dirname,
-        'training/train_ssd_mobilenet_v1_FLIR_CMU00-05-selected_all_0814/pipeline.config')
+        'training/train_ssd_mobilenet_v1_FLIR_CMU00-05-selected_all_0825/pipeline.config')
     label_map_path = os.path.join(dirname,
         'training/cmudata_label_map.pbtxt')
     detector = ObjectDetector(checkpoint_path, pipeline_config_path, label_map_path)
@@ -267,7 +267,7 @@ if __name__ == '__main__':
     base_path = sys.argv[1]
     target = sys.argv[2]
     img_path = os.path.join(base_path, 'Images', target)
-    img_path_l = os.path.join(base_path, 'Images', target.split('_')[0] + '_L')
+    img_path_r = os.path.join(base_path, 'Images', target.split('_')[0] + '_R')
     output_dir = sys.argv[3]
 
     frame_ctr = 0
@@ -284,17 +284,17 @@ if __name__ == '__main__':
     # for f in sorted(os.listdir(img_path)):
     #     print(example)
         img = cv2.imread(os.path.join(img_path, example + '.jpeg'))
-        examplel = example.split('_')
-        examplel[2] = 'L'
-        examplel = '_'.join(examplel)
-        imgl = cv2.imread(os.path.join(img_path_l, examplel + '.jpeg'))
+        exampler = example.split('_')
+        exampler[2] = 'L'
+        exampler = '_'.join(exampler)
+        imgr = cv2.imread(os.path.join(img_path_r, exampler + '.jpeg'))
         # print(os.path.join(img_path_l, examplel + '.jpeg'))
         # exit()
         # print(img_path + example + '.jpeg')
         if img is None:
             break
         height, width, channels = img.shape
-        img = detector.detect(imgl, imgl)
+        img = detector.detect(imgr, imgr)
         cv2.imwrite(os.path.join(output_dir, target + '_' + example + ".jpeg"), img)
         #timing
         frame_ctr = frame_ctr + 1
