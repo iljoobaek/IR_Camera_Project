@@ -344,8 +344,8 @@ def main(argv):
     label_map = label_map_util.load_labelmap(FLAGS.label_map)
     categories = label_map_util.convert_label_map_to_categories(label_map, max_num_classes=100, use_display_name=True)
 
-    # confusion_matrix = process_detections(FLAGS.detections_record, categories)
-    confusion_matrix = process_detections_2(FLAGS.detections_record, FLAGS.detections_record2, categories)
+    confusion_matrix = process_detections(FLAGS.detections_record, categories)
+    #confusion_matrix = process_detections_2(FLAGS.detections_record, FLAGS.detections_record2, categories)
 
     display(confusion_matrix, categories, FLAGS.output_path)    
     
